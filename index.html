@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UAPA - Portafolio Académico (Ángel Daviel Castillo Acevedo)</title>
-    <!-- Tailwind CSS para diseño moderno y ultra-responsivo -->
+    <title>UAPA - Portafolio de Agrimensura (Ángel Daviel Castillo Acevedo)</title>
+    <!-- Tailwind CSS para diseño moderno, adaptativo y libre de desbordamientos -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome para iconos de alta calidad técnica -->
+    <!-- FontAwesome para iconografía técnica detallada -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- Google Fonts modernas: Plus Jakarta Sans para cuerpo y Lora para textos formales -->
+    <!-- Google Fonts modernas: Plus Jakarta Sans para la interfaz y Lora para textos formales de lectura -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
@@ -17,150 +17,194 @@
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: #f8fafc;
+            overflow-x: hidden; /* Evita cualquier desbordamiento horizontal accidental */
         }
         .serif-text {
             font-family: 'Lora', serif;
         }
-        /* Transiciones suaves para los cambios de pestaña */
+        /* Transiciones fluidas de cambio de pestaña */
         .tab-content {
-            transition: opacity 0.3s ease-in-out;
+            transition: opacity 0.25s ease-in-out;
+        }
+        /* Ajuste de scroll suave */
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 </head>
-<body class="text-slate-800 flex flex-col min-h-screen bg-slate-50">
+<body class="text-slate-800 flex flex-col min-h-screen bg-slate-50 antialiased">
 
-    <!-- BARRA DE NAVEGACIÓN ESTILO GOOGLE SITES -->
     <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
-                <!-- Logotipo / Título del Sitio -->
-                <div class="flex items-center space-x-3">
-                    <div class="bg-blue-900 text-white p-2 rounded-xl flex items-center justify-center shadow-md shadow-blue-200">
-                        <i class="fa-solid fa-map-location-dot text-xl"></i>
+                <!-- Identidad de Marca / Logotipo con prevención de desbordamiento -->
+                <div class="flex items-center space-x-2 sm:space-x-3 shrink-0">
+                    <div class="bg-blue-900 text-white p-2 rounded-xl flex items-center justify-center shadow-md shadow-blue-200 shrink-0">
+                        <i class="fa-solid fa-map-location-dot text-lg sm:text-xl"></i>
                     </div>
-                    <div>
-                        <span class="font-bold text-base sm:text-lg text-slate-900 tracking-tight">Portafolio Digital</span>
-                        <span class="hidden sm:block text-[10px] text-slate-500 font-medium">Análisis y Producción de Textos</span>
+                    <div class="leading-tight">
+                        <span class="block font-bold text-sm sm:text-base lg:text-lg text-slate-900 tracking-tight whitespace-nowrap">Portafolio Digital</span>
+                        <span class="hidden sm:block text-[10px] text-slate-500 font-medium whitespace-nowrap">Análisis y Producción de Textos</span>
                     </div>
                 </div>
                 
-                <!-- Navegación de Páginas -->
-                <nav class="hidden md:flex space-x-1">
-                    <button onclick="switchTab('inicio')" id="nav-inicio" class="nav-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all text-blue-900 bg-blue-50">
+                <!-- Navegación de Escritorio (Oculta en móviles/tabletas menores a 1024px para evitar colapso de espacio) -->
+                <nav class="hidden lg:flex space-x-1 h-full items-center">
+                    <button onclick="switchTab('inicio')" id="nav-inicio" class="nav-btn px-3 py-2 rounded-lg text-xs xl:text-sm font-semibold transition-all text-blue-900 bg-blue-50">
                         <i class="fa-solid fa-house mr-1.5"></i> Inicio
                     </button>
-                    <button onclick="switchTab('analisis')" id="nav-analisis" class="nav-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all text-slate-600 hover:text-slate-900 hover:bg-slate-100">
+                    <button onclick="switchTab('analisis')" id="nav-analisis" class="nav-btn px-3 py-2 rounded-lg text-xs xl:text-sm font-semibold transition-all text-slate-600 hover:text-slate-900 hover:bg-slate-100">
                         <i class="fa-solid fa-file-invoice mr-1.5"></i> Actividad I: Análisis
                     </button>
-                    <button onclick="switchTab('ensayo')" id="nav-ensayo" class="nav-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all text-slate-600 hover:text-slate-900 hover:bg-slate-100">
+                    <button onclick="switchTab('ensayo')" id="nav-ensayo" class="nav-btn px-3 py-2 rounded-lg text-xs xl:text-sm font-semibold transition-all text-slate-600 hover:text-slate-900 hover:bg-slate-100">
                         <i class="fa-solid fa-pen-nib mr-1.5"></i> Actividad II: Ensayo
                     </button>
-                    <button onclick="switchTab('reflexion')" id="nav-reflexion" class="nav-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all text-slate-600 hover:text-slate-900 hover:bg-slate-100">
+                    <button onclick="switchTab('reflexion')" id="nav-reflexion" class="nav-btn px-3 py-2 rounded-lg text-xs xl:text-sm font-semibold transition-all text-slate-600 hover:text-slate-900 hover:bg-slate-100">
                         <i class="fa-solid fa-brain mr-1.5"></i> Reflexión Final
-                    </button>
-                    <button onclick="switchTab('tutorial')" id="nav-tutorial" class="nav-btn px-4 py-2 rounded-lg text-sm font-semibold transition-all text-emerald-600 hover:bg-emerald-50">
-                        <i class="fa-brands fa-google mr-1.5"></i> ¿Cómo insertarlo?
                     </button>
                 </nav>
 
-                <!-- Menú móvil / Nombre de usuario -->
-                <div class="flex items-center space-x-2">
-                    <span class="hidden lg:inline-flex bg-slate-100 text-slate-700 text-xs font-semibold px-3 py-1.5 rounded-full items-center">
+                <!-- Información del Estudiante y Botón de Hamburguesa para Móvil -->
+                <div class="flex items-center space-x-2 shrink-0">
+                    <span class="hidden md:inline-flex bg-slate-100 text-slate-700 text-[11px] xl:text-xs font-semibold px-3 py-1.5 rounded-full items-center">
                         <span class="w-2 h-2 bg-blue-600 rounded-full mr-2 animate-pulse"></span> Ángel D. Castillo (100102326)
                     </span>
-                    <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100">
-                        <i class="fa-solid fa-bars text-xl"></i>
+                    <!-- Botón Hamburguesa optimizado para tactilidad móvil (44x44px área reactiva) -->
+                    <button onclick="toggleMobileMenu()" class="lg:hidden p-2.5 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-none transition-colors" aria-label="Abrir menú de navegación">
+                        <i class="fa-solid fa-bars text-xl sm:text-2xl"></i>
                     </button>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- MENÚ MÓVIL DESPLEGABLE -->
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-4 space-y-1">
-        <button onclick="switchTab('inicio'); toggleMobileMenu()" class="w-full text-left px-3 py-2.5 rounded-md text-base font-medium text-slate-700 hover:bg-slate-100"><i class="fa-solid fa-house w-6"></i> Inicio</button>
-        <button onclick="switchTab('analisis'); toggleMobileMenu()" class="w-full text-left px-3 py-2.5 rounded-md text-base font-medium text-slate-700 hover:bg-slate-100"><i class="fa-solid fa-file-invoice w-6"></i> Actividad I: Análisis</button>
-        <button onclick="switchTab('ensayo'); toggleMobileMenu()" class="w-full text-left px-3 py-2.5 rounded-md text-base font-medium text-slate-700 hover:bg-slate-100"><i class="fa-solid fa-pen-nib w-6"></i> Actividad II: Ensayo</button>
-        <button onclick="switchTab('reflexion'); toggleMobileMenu()" class="w-full text-left px-3 py-2.5 rounded-md text-base font-medium text-slate-700 hover:bg-slate-100"><i class="fa-solid fa-brain w-6"></i> Reflexión Final</button>
-        <button onclick="switchTab('tutorial'); toggleMobileMenu()" class="w-full text-left px-3 py-2.5 rounded-md text-base font-medium text-emerald-600 hover:bg-emerald-50"><i class="fa-brands fa-google w-6"></i> ¿Cómo insertarlo?</button>
+    <!-- Menú Móvil Lateral Tipo "Drawer" con Fondo Translúcido -->
+    <div id="mobile-drawer" class="fixed inset-0 z-50 transform translate-x-full transition-transform duration-300 ease-in-out lg:hidden" role="dialog" aria-modal="true">
+        <!-- Fondo oscuro translúcido para enfoque visual -->
+        <div class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="toggleMobileMenu()"></div>
+        
+        <!-- Contenedor del Menú Deslizante -->
+        <div class="fixed right-0 top-0 bottom-0 w-4/5 max-w-xs bg-white h-full shadow-2xl flex flex-col justify-between p-6 z-10">
+            <div class="space-y-6">
+                <!-- Cabecera del Drawer -->
+                <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+                    <div class="flex items-center space-x-2">
+                        <i class="fa-solid fa-map-location-dot text-blue-900 text-lg"></i>
+                        <span class="font-bold text-slate-900 text-sm">Menú de Navegación</span>
+                    </div>
+                    <button onclick="toggleMobileMenu()" class="p-2 text-slate-400 hover:text-slate-900 hover:bg-slate-100 rounded-lg">
+                        <i class="fa-solid fa-xmark text-lg"></i>
+                    </button>
+                </div>
+
+                <!-- Enlaces del Menú Móvil -->
+                <nav class="space-y-2">
+                    <button onclick="switchTab('inicio'); toggleMobileMenu()" class="mobile-nav-btn w-full flex items-center px-4 py-3 rounded-xl text-sm font-semibold transition-all text-blue-900 bg-blue-50">
+                        <i class="fa-solid fa-house w-6 text-base"></i> Inicio
+                    </button>
+                    <button onclick="switchTab('analisis'); toggleMobileMenu()" class="mobile-nav-btn w-full flex items-center px-4 py-3 rounded-xl text-sm font-semibold transition-all text-slate-600 hover:text-slate-900 hover:bg-slate-50">
+                        <i class="fa-solid fa-file-invoice w-6 text-base"></i> Actividad I: Análisis
+                    </button>
+                    <button onclick="switchTab('ensayo'); toggleMobileMenu()" class="mobile-nav-btn w-full flex items-center px-4 py-3 rounded-xl text-sm font-semibold transition-all text-slate-600 hover:text-slate-900 hover:bg-slate-50">
+                        <i class="fa-solid fa-pen-nib w-6 text-base"></i> Actividad II: Ensayo
+                    </button>
+                    <button onclick="switchTab('reflexion'); toggleMobileMenu()" class="mobile-nav-btn w-full flex items-center px-4 py-3 rounded-xl text-sm font-semibold transition-all text-slate-600 hover:text-slate-900 hover:bg-slate-50">
+                        <i class="fa-solid fa-brain w-6 text-base"></i> Reflexión Final
+                    </button>
+                </nav>
+            </div>
+
+            <!-- Identidad de Alumno en el Menú Móvil -->
+            <div class="border-t border-slate-100 pt-4 space-y-2">
+                <p class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Estudiante UAPA</p>
+                <div class="flex items-center space-x-3 bg-slate-50 p-3 rounded-xl">
+                    <div class="h-9 w-9 rounded-full bg-blue-900 text-white flex items-center justify-center font-bold text-xs shrink-0">
+                        AC
+                    </div>
+                    <div class="min-w-0">
+                        <p class="text-xs font-bold text-slate-900 truncate">Ángel Daviel Castillo</p>
+                        <p class="text-[10px] font-mono text-slate-500">Matrícula: 100102326</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- CONTENEDOR PRINCIPAL -->
-    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
         
-        <!-- PÁGINA DE INICIO (PRESENTACIÓN E INTRODUCCIÓN) -->
-        <section id="tab-inicio" class="tab-content space-y-10">
-            <!-- Banner Académico -->
+        <section id="tab-inicio" class="tab-content space-y-6 sm:space-y-10">
+            <!-- Banner Académico Adaptativo -->
             <div class="relative bg-slate-900 rounded-2xl overflow-hidden shadow-xl text-white">
                 <div class="absolute inset-0 bg-cover bg-center opacity-30" style="background-image: url('https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=1200&q=80');"></div>
                 <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-blue-950/90 to-slate-900/40"></div>
                 
-                <div class="relative px-6 py-12 sm:px-12 sm:py-20 max-w-4xl">
-                    <span class="bg-blue-500/20 text-blue-300 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider border border-blue-400/30">Portafolio Digital de Evidencias</span>
-                    <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight mt-4 text-white leading-tight">Análisis Argumentativo y Redacción en la Agrimensura</h1>
-                    <p class="mt-4 text-base sm:text-lg text-slate-300">Asignatura: Análisis y Producción de Textos (Tarea V-2)</p>
+                <div class="relative px-6 py-12 sm:px-12 sm:py-20 max-w-4xl space-y-4">
+                    <span class="inline-block bg-blue-500/20 text-blue-300 text-[10px] sm:text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider border border-blue-400/30">Portafolio Digital de Evidencias</span>
+                    <h1 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">Análisis Argumentativo y Redacción en la Agrimensura</h1>
+                    <p class="text-sm sm:text-lg text-slate-300">Asignatura: Análisis y Producción de Textos (Tarea V-2)</p>
                 </div>
             </div>
 
-            <!-- Hoja de Presentación e Introducción -->
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Hoja de Presentación e Introducción en cuadrícula de diseño -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
                 <!-- Hoja de Presentación Oficial (UAPA) -->
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 space-y-6 flex flex-col justify-between">
                     <div>
-                        <!-- Logo UAPA -->
+                        <!-- Logotipo Institucional de la UAPA con Fallback de Imagen Robusto -->
                         <div class="flex justify-center mb-6 border-b border-slate-100 pb-4">
-                            <img src="image_d96554.png" alt="Logo UAPA Universidad Abierta Para Adultos" class="max-h-24 object-contain" onerror="this.onerror=null; this.src='https://popin.uapa.edu.do/static/images/logo/logo_uapa.png'">
+                            <img src="image_d96554.png" alt="Logo UAPA" class="max-h-20 sm:max-h-24 object-contain" onerror="this.onerror=null; this.src='https://popin.uapa.edu.do/static/images/logo/logo_uapa.png'">
                         </div>
                         
                         <div class="space-y-4">
                             <div>
-                                <p class="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Institución</p>
-                                <p class="text-slate-800 font-bold text-sm">Universidad Abierta para Adultos (UAPA)</p>
+                                <p class="text-[9px] sm:text-[10px] text-slate-400 uppercase font-bold tracking-wider">Institución</p>
+                                <p class="text-slate-800 font-bold text-xs sm:text-sm">Universidad Abierta para Adultos (UAPA)</p>
                             </div>
                             <div>
-                                <p class="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Escuela</p>
-                                <p class="text-slate-800 font-bold text-sm">Agrimensura</p>
+                                <p class="text-[9px] sm:text-[10px] text-slate-400 uppercase font-bold tracking-wider">Escuela</p>
+                                <p class="text-slate-800 font-bold text-xs sm:text-sm">Agrimensura</p>
                             </div>
                             <div>
-                                <p class="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Participante</p>
-                                <p class="text-blue-900 font-extrabold text-sm flex items-center">
+                                <p class="text-[9px] sm:text-[10px] text-slate-400 uppercase font-bold tracking-wider">Participante</p>
+                                <p class="text-blue-900 font-extrabold text-xs sm:text-sm flex items-center">
                                     <i class="fa-solid fa-user-graduate mr-2 text-blue-600"></i> Ángel Daviel Castillo Acevedo
                                 </p>
                             </div>
                             <div>
-                                <p class="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Matrícula</p>
-                                <p class="text-slate-700 font-mono text-sm font-semibold">100102326</p>
+                                <p class="text-[9px] sm:text-[10px] text-slate-400 uppercase font-bold tracking-wider">Matrícula</p>
+                                <p class="text-slate-700 font-mono text-xs sm:text-sm font-semibold">100102326</p>
                             </div>
                             <div>
-                                <p class="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Asignatura</p>
-                                <p class="text-slate-800 font-bold text-sm">Análisis y Producción de Textos</p>
+                                <p class="text-[9px] sm:text-[10px] text-slate-400 uppercase font-bold tracking-wider">Asignatura</p>
+                                <p class="text-slate-800 font-bold text-xs sm:text-sm">Análisis y Producción de Textos</p>
                             </div>
                             <div>
-                                <p class="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Facilitador/a</p>
-                                <p class="text-slate-700 font-semibold text-sm">Pura A. Reinoso Navarro</p>
+                                <p class="text-[9px] sm:text-[10px] text-slate-400 uppercase font-bold tracking-wider">Facilitador/a</p>
+                                <p class="text-slate-700 font-semibold text-xs sm:text-sm">Pura A. Reinoso Navarro</p>
                             </div>
                             <div>
-                                <p class="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Tema</p>
-                                <span class="inline-flex bg-blue-100 text-blue-900 text-xs font-bold px-2.5 py-1 rounded-md mt-1">
+                                <p class="text-[9px] sm:text-[10px] text-slate-400 uppercase font-bold tracking-wider">Tema</p>
+                                <span class="inline-flex bg-blue-100 text-blue-900 text-[10px] sm:text-xs font-bold px-2.5 py-1 rounded-md mt-1">
                                     <i class="fa-solid fa-file-invoice mr-1.5"></i> Tarea V-2
                                 </span>
                             </div>
                         </div>
                     </div>
                     <div class="border-t border-slate-100 pt-4 mt-4">
-                        <p class="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Fecha de Entrega</p>
-                        <p class="text-slate-700 font-medium text-xs">19 de Junio de 2026</p>
+                        <p class="text-[9px] sm:text-[10px] text-slate-400 uppercase font-bold tracking-wider">Fecha de Entrega</p>
+                        <p class="text-slate-700 font-medium text-xs sm:text-sm">19 de Junio de 2026</p>
                     </div>
                 </div>
 
                 <!-- Introducción formal del Portafolio -->
-                <div class="lg:col-span-2 bg-white rounded-2xl shadow-sm border border-slate-200 p-8 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center space-x-3 mb-6">
+                <div class="lg:col-span-2 bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-3 mb-2">
                             <div class="h-8 w-1.5 bg-blue-900 rounded"></div>
-                            <h2 class="text-2xl font-bold text-slate-900">Introducción</h2>
+                            <h2 class="text-xl sm:text-2xl font-bold text-slate-900">Introducción</h2>
                         </div>
-                        <div class="space-y-4 text-slate-600 leading-relaxed serif-text text-base">
+                        <div class="space-y-4 text-slate-600 leading-relaxed serif-text text-sm sm:text-base text-justify">
                             <p>
                                 El presente portafolio de evidencias constituye un registro sistemático del proceso de aprendizaje desarrollado en la unidad de argumentación y producción discursiva de la asignatura <strong>Análisis y Producción de Textos</strong>. Su propósito medular es articular de forma sólida las herramientas de la comunicación escrita con el ejercicio ético y técnico de la <strong>Agrimensura</strong>.
                             </p>
@@ -173,7 +217,7 @@
                         </div>
                     </div>
                     <div class="mt-8 pt-6 border-t border-slate-100 flex justify-end">
-                        <button onclick="switchTab('analisis')" class="bg-blue-900 hover:bg-blue-950 text-white font-semibold text-sm px-5 py-2.5 rounded-xl transition-all shadow-md shadow-blue-100 hover:shadow-lg flex items-center">
+                        <button onclick="switchTab('analisis')" class="w-full sm:w-auto bg-blue-900 hover:bg-blue-950 text-white font-semibold text-xs sm:text-sm px-5 py-3 rounded-xl transition-all shadow-md shadow-blue-100 hover:shadow-lg flex items-center justify-center">
                             Ver Actividad I: Análisis <i class="fa-solid fa-arrow-right ml-2"></i>
                         </button>
                     </div>
@@ -181,119 +225,117 @@
             </div>
         </section>
 
-        <!-- PÁGINA 1: ANÁLISIS DEL TEXTO -->
-        <section id="tab-analisis" class="tab-content hidden space-y-8">
+        <section id="tab-analisis" class="tab-content hidden space-y-6 sm:space-y-8">
             <div class="flex flex-col md:flex-row md:items-center md:justify-between border-b border-slate-200 pb-4">
                 <div>
-                    <h2 class="text-2xl font-extrabold text-slate-950">Actividad I: Análisis de Texto Argumentativo</h2>
-                    <p class="text-slate-500 mt-1">Examen estructural de un artículo de opinión de corte técnico-geodésico</p>
+                    <h2 class="text-xl sm:text-2xl font-extrabold text-slate-950">Actividad I: Análisis de Texto Argumentativo</h2>
+                    <p class="text-xs sm:text-sm text-slate-500 mt-1">Examen estructural de un artículo de opinión de corte técnico-geodésico</p>
                 </div>
-                <div class="mt-3 md:mt-0 bg-blue-50 text-blue-900 text-xs font-bold px-3 py-1.5 rounded-lg flex items-center border border-blue-100">
+                <div class="mt-3 md:mt-0 self-start bg-blue-50 text-blue-900 text-[10px] sm:text-xs font-bold px-3 py-1.5 rounded-lg flex items-center border border-blue-100 whitespace-nowrap">
                     <i class="fa-solid fa-circle-check mr-2"></i> Análisis Técnico Aprobado
                 </div>
             </div>
 
             <!-- Ficha Técnica del Artículo Analizado -->
             <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
-                <div class="bg-slate-900 px-6 py-4 text-white flex items-center justify-between">
-                    <span class="font-bold text-xs tracking-wider uppercase"><i class="fa-solid fa-file-shield mr-2 text-blue-400"></i>Ficha Técnica del Artículo Analizado</span>
-                    <span class="text-[10px] bg-slate-800 px-2 py-1 rounded-md font-mono">Lectura Disciplinar</span>
+                <div class="bg-slate-900 px-4 sm:px-6 py-4 text-white flex items-center justify-between">
+                    <span class="font-bold text-[10px] sm:text-xs tracking-wider uppercase"><i class="fa-solid fa-file-shield mr-2 text-blue-400"></i>Ficha Técnica del Artículo Analizado</span>
+                    <span class="text-[9px] sm:text-[10px] bg-slate-800 px-2 py-1 rounded-md font-mono shrink-0">Lectura Disciplinar</span>
                 </div>
-                <div class="p-6 grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div>
-                        <span class="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Artículo de Referencia</span>
-                        <p class="text-slate-800 font-bold mt-1 text-sm">"La necesidad de la Red Geodésica Activa en la delimitación parcelaria moderna"</p>
+                <div class="p-4 sm:p-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="space-y-1">
+                        <span class="text-[9px] sm:text-[10px] text-slate-400 uppercase font-bold tracking-wider">Artículo de Referencia</span>
+                        <p class="text-slate-800 font-bold text-xs sm:text-sm">"La necesidad de la Red Geodésica Activa en la delimitación parcelaria moderna"</p>
                     </div>
-                    <div>
-                        <span class="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Tesis Central</span>
-                        <p class="text-slate-600 font-medium mt-1 text-xs leading-relaxed">La transición total e imperativa hacia estaciones de referencia espacial de operación continua (CORS) es la única vía para erradicar las discrepancias históricas de los linderos catastrales.</p>
+                    <div class="space-y-1">
+                        <span class="text-[9px] sm:text-[10px] text-slate-400 uppercase font-bold tracking-wider">Tesis Central</span>
+                        <p class="text-slate-600 font-medium text-xs leading-relaxed">La transición total e imperativa hacia estaciones de referencia espacial de operación continua (CORS) es la única vía para erradicar las discrepancias históricas de los linderos catastrales.</p>
                     </div>
-                    <div>
-                        <span class="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Tipología de Argumentación</span>
-                        <p class="text-slate-600 font-medium mt-1 text-xs">Uso coordinado de argumentos empíricos de hecho técnico, demostración cartográfica y principio de seguridad jurídica.</p>
+                    <div class="space-y-1">
+                        <span class="text-[9px] sm:text-[10px] text-slate-400 uppercase font-bold tracking-wider">Tipología de Argumentación</span>
+                        <p class="text-slate-600 font-medium text-xs">Uso coordinado de argumentos empíricos de hecho técnico, demostración cartográfica y principio de seguridad jurídica.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Desglose de Argumentos con Tarjetas Interactivas -->
+            <!-- Desglose de Argumentos en Tarjetas Adaptativas -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- Argumento Principal -->
-                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between hover:shadow-md transition-all border-l-4 border-l-blue-900">
-                    <div class="space-y-4">
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 sm:p-6 flex flex-col justify-between hover:shadow-md transition-all border-l-4 border-l-blue-900">
+                    <div class="space-y-3">
                         <div class="flex items-center space-x-3">
-                            <span class="bg-blue-50 text-blue-900 p-2.5 rounded-xl"><i class="fa-solid fa-circle-nodes text-lg"></i></span>
-                            <h3 class="font-bold text-slate-900 text-base">Argumento de Hecho Técnico</h3>
+                            <span class="bg-blue-50 text-blue-900 p-2 sm:p-2.5 rounded-xl"><i class="fa-solid fa-circle-nodes text-base sm:text-lg"></i></span>
+                            <h3 class="font-bold text-slate-900 text-sm sm:text-base">Argumento de Hecho Técnico</h3>
                         </div>
-                        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed serif-text">
+                        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed serif-text text-justify">
                             "Los sistemas de medición tradicionales basados en hitos terrestres físicos acumulan errores sistemáticos severos debido a la inestabilidad de la corteza y la degradación natural del terreno. El uso de tecnología satelital GNSS acoplada a un marco activo estatal fija los linderos en coordenadas absolutas tridimensionales, logrando una certidumbre matemática inalterable."
                         </p>
                     </div>
                     <div class="mt-6 pt-4 border-t border-slate-100">
-                        <span class="text-[10px] font-bold bg-blue-50 text-blue-900 px-2.5 py-1 rounded-md">Evidencia Científica</span>
+                        <span class="inline-block text-[9px] sm:text-[10px] font-bold bg-blue-50 text-blue-900 px-2.5 py-1 rounded-md">Evidencia Científica</span>
                     </div>
                 </div>
 
                 <!-- Contraargumento -->
-                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between hover:shadow-md transition-all border-l-4 border-l-amber-500">
-                    <div class="space-y-4">
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 sm:p-6 flex flex-col justify-between hover:shadow-md transition-all border-l-4 border-l-amber-500">
+                    <div class="space-y-3">
                         <div class="flex items-center space-x-3">
-                            <span class="bg-amber-50 text-amber-600 p-2.5 rounded-xl"><i class="fa-solid fa-triangle-exclamation text-lg"></i></span>
-                            <h3 class="font-bold text-slate-900 text-base">Contraargumento Encontrado</h3>
+                            <span class="bg-amber-50 text-amber-600 p-2 sm:p-2.5 rounded-xl"><i class="fa-solid fa-triangle-exclamation text-base sm:text-lg"></i></span>
+                            <h3 class="font-bold text-slate-900 text-sm sm:text-base">Contraargumento Encontrado</h3>
                         </div>
-                        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed serif-text">
+                        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed serif-text text-justify">
                             "La topografía de radiación clásica con estaciones totales sobre hitos locales es significativamente más barata y accesible para la economía del agrimensor independiente. Imponer la transición forzosa hacia costosas tecnologías satelitales crea una brecha excluyente que margina a los profesionales tradicionales."
                         </p>
                     </div>
                     <div class="mt-6 pt-4 border-t border-slate-100">
-                        <span class="text-[10px] font-bold bg-amber-50 text-amber-700 px-2.5 py-1 rounded-md">Objeción del Sector Técnico</span>
+                        <span class="inline-block text-[9px] sm:text-[10px] font-bold bg-amber-50 text-amber-700 px-2.5 py-1 rounded-md">Objeción del Sector Técnico</span>
                     </div>
                 </div>
 
                 <!-- Refutación -->
-                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between hover:shadow-md transition-all border-l-4 border-l-emerald-500">
-                    <div class="space-y-4">
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 sm:p-6 flex flex-col justify-between hover:shadow-md transition-all border-l-4 border-l-emerald-500">
+                    <div class="space-y-3">
                         <div class="flex items-center space-x-3">
-                            <span class="bg-emerald-50 text-emerald-600 p-2.5 rounded-xl"><i class="fa-solid fa-scale-balanced text-lg"></i></span>
-                            <h3 class="font-bold text-slate-900 text-base">Refutación Metodológica</h3>
+                            <span class="bg-emerald-50 text-emerald-600 p-2 sm:p-2.5 rounded-xl"><i class="fa-solid fa-scale-balanced text-base sm:text-lg"></i></span>
+                            <h3 class="font-bold text-slate-900 text-sm sm:text-base">Refutación Metodológica</h3>
                         </div>
-                        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed serif-text">
+                        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed serif-text text-justify">
                             "Aunque la inversión inicial en receptores satelitales geodésicos es superior, el costo derivado de un solo litigio judicial debido a deslindes defectuosos o solapamientos de parcelas supera con creces el costo de cualquier equipo. La fe pública y la estabilidad del sistema registral inmobiliario de un país no pueden abaratarse para proteger metodologías propensas al error."
                         </p>
                     </div>
                     <div class="mt-6 pt-4 border-t border-slate-100">
-                        <span class="text-[10px] font-bold bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-md">Resolución Costo-Beneficio</span>
+                        <span class="inline-block text-[9px] sm:text-[10px] font-bold bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-md">Resolución Costo-Beneficio</span>
                     </div>
                 </div>
             </div>
             
-            <div class="bg-slate-900 text-slate-300 rounded-2xl p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mt-6">
+            <div class="bg-slate-900 text-slate-300 rounded-2xl p-5 sm:p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mt-6">
                 <div class="flex items-start space-x-3">
-                    <i class="fa-solid fa-graduation-cap text-blue-400 text-2xl mt-1"></i>
+                    <i class="fa-solid fa-graduation-cap text-blue-400 text-xl sm:text-2xl mt-1 shrink-0"></i>
                     <div>
                         <h4 class="font-bold text-white text-sm">Lección de Aprendizaje: Actividad I</h4>
-                        <p class="text-slate-400 text-xs mt-1">Identificar los contraargumentos en el texto analizado me enseñó que un reporte pericial en agrimensura adquiere fuerza probatoria no cuando ignora las opiniones colindantes, sino cuando las anticipa, analiza y refuta rigurosamente mediante el método matemático.</p>
+                        <p class="text-slate-400 text-xs mt-1">Identificar los contraargumentos en el texto analizado me enseñó que un reporte pericial en agrimensura adquiere fuerza probatoria no cuando ignora las opiniones colindantes, sino cuando las anticipa, analiza y refuta rigurosamente mediante el método científico-matemático.</p>
                     </div>
                 </div>
-                <button onclick="switchTab('ensayo')" class="bg-blue-900 hover:bg-blue-950 text-white font-semibold text-xs px-4 py-2.5 rounded-lg transition-all whitespace-nowrap">
+                <button onclick="switchTab('ensayo')" class="w-full md:w-auto bg-blue-900 hover:bg-blue-950 text-white font-semibold text-xs px-4 py-3 rounded-lg transition-all whitespace-nowrap text-center">
                     Ir al Ensayo <i class="fa-solid fa-arrow-right ml-1"></i>
                 </button>
             </div>
         </section>
 
-        <!-- PÁGINA 2: ENSAYO ARGUMENTATIVO -->
-        <section id="tab-ensayo" class="tab-content hidden space-y-8">
+        <section id="tab-ensayo" class="tab-content hidden space-y-6 sm:space-y-8">
             <div class="border-b border-slate-200 pb-4">
-                <h2 class="text-2xl font-extrabold text-slate-950">Actividad II: Ensayo Argumentativo Original</h2>
-                <p class="text-slate-500 mt-1">La defensa científica del marco geodésico como pilar de la seguridad jurídica</p>
+                <h2 class="text-xl sm:text-2xl font-extrabold text-slate-950">Actividad II: Ensayo Argumentativo Original</h2>
+                <p class="text-xs sm:text-sm text-slate-500 mt-1">La defensa científica del marco geodésico como pilar de la seguridad jurídica</p>
             </div>
 
             <!-- Ensayo Formato Papel Académico Premium -->
             <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden max-w-4xl mx-auto">
                 <!-- Portada del Ensayo -->
-                <div class="bg-gradient-to-r from-slate-950 via-slate-900 to-blue-950 px-8 py-12 text-white text-center relative">
-                    <span class="bg-blue-500/20 text-blue-300 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider border border-blue-400/30">Producción Discursiva Académica</span>
-                    <h2 class="text-2xl sm:text-3xl font-extrabold mt-4 leading-tight serif-text">Tecnología Satelital y Agrimensura: El Camino Hacia la Cero Conflictividad Territorial</h2>
-                    <div class="mt-4 flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-4 text-xs text-slate-400">
+                <div class="bg-gradient-to-r from-slate-950 via-slate-900 to-blue-950 px-6 sm:px-8 py-10 sm:py-14 text-white text-center relative">
+                    <span class="inline-block bg-blue-500/20 text-blue-300 text-[10px] sm:text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider border border-blue-400/30">Producción Discursiva Académica</span>
+                    <h2 class="text-xl sm:text-3xl font-extrabold mt-4 leading-tight serif-text px-2">Tecnología Satelital y Agrimensura: El Camino Hacia la Cero Conflictividad Territorial</h2>
+                    <div class="mt-4 flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-4 text-[11px] sm:text-xs text-slate-400">
                         <span>Autor: Ángel Daviel Castillo Acevedo</span>
                         <span class="hidden sm:inline">•</span>
                         <span>Asignatura: Análisis y Producción de Textos</span>
@@ -302,65 +344,86 @@
                     </div>
                 </div>
 
-                <!-- Cuerpo del Ensayo -->
-                <div class="p-8 sm:p-12 space-y-8 serif-text text-slate-700 leading-relaxed text-base sm:text-lg">
+                <!-- Cuerpo del Ensayo con tipografía Lora Serif -->
+                <div class="p-6 sm:p-10 lg:p-12 space-y-6 sm:space-y-8 serif-text text-slate-700 leading-relaxed text-sm sm:text-base lg:text-lg">
                     
                     <!-- Introducción -->
                     <div class="space-y-3">
-                        <h3 class="font-bold text-slate-900 text-lg tracking-tight font-sans not-italic border-b border-slate-100 pb-2">I. Introducción</h3>
-                        <p class="indent-8">
+                        <h3 class="font-bold text-slate-900 text-base sm:text-lg tracking-tight font-sans not-italic border-b border-slate-100 pb-2 flex items-center">
+                            <span class="text-blue-900 mr-2">I.</span> Introducción
+                        </h3>
+                        <p class="indent-6 sm:indent-8 text-justify">
                             La propiedad inmobiliaria ha constituido, desde los albores de la civilización y el derecho civil romano, uno de los activos socioeconómicos más propensos a la disputa y la vulnerabilidad jurídica. En el contexto contemporáneo, caracterizado por una densificación urbana acelerada, transacciones comerciales de gran envergadura y una creciente presión sobre el suelo agrícola, la definición precisa de los límites de propiedad se eleva a la categoría de pilar de la seguridad del Estado. 
                         </p>
-                        <p class="indent-8">
+                        <p class="indent-6 sm:indent-8 text-justify">
                             Tradicionalmente, la delimitación territorial dependía de hitos físicos, marcas naturales e instrumentos de medición clásicos desconectados de un sistema unificado global. Esta desarticulación cartográfica ha provocado catastróficos desplazamientos de coordenadas y solapamientos que saturan continuamente los tribunales de la Jurisdicción Inmobiliaria. En consecuencia, se sostiene que <strong>la adopción obligatoria de los sistemas de posicionamiento geodésico activo (GNSS) enlazados a redes CORS es el único instrumento científico y ético capaz de mitigar los conflictos de límites parcelarios y blindar la fe pública del registro de la propiedad.</strong>
                         </p>
                     </div>
 
                     <!-- Desarrollo -->
                     <div class="space-y-4">
-                        <h3 class="font-bold text-slate-900 text-lg tracking-tight font-sans not-italic border-b border-slate-100 pb-2">II. Desarrollo y Argumentación</h3>
-                        <p class="indent-8">
+                        <h3 class="font-bold text-slate-900 text-base sm:text-lg tracking-tight font-sans not-italic border-b border-slate-100 pb-2 flex items-center">
+                            <span class="text-blue-900 mr-2">II.</span> Desarrollo y Argumentación
+                        </h3>
+                        <p class="indent-6 sm:indent-8 text-justify">
                             El principal argumento de peso técnico que consolida esta postura reposa en la inmutabilidad de la geometría de coordenadas tridimensionales frente a la inevitable fragilidad de las marcas físicas terrestres. Los hitos clásicos de piedra, estacas de madera u hormigón son propensos a ser removidos, alterados de manera fraudulenta o destruidos por desastres naturales y obras civiles. 
                         </p>
-                        <p class="indent-8">
+                        <p class="indent-6 sm:indent-8 text-justify">
                             Cuando un levantamiento parcelario está vinculado a una Red Geodésica Activa oficial del Estado, el lindero deja de depender de objetos físicos vulnerables. Su posición se define de forma absoluta con coordenadas de precisión milimétrica respecto al elipsoide terrestre. Si un vecino colindante alterase físicamente un muro divisorio, un agrimensor moderno puede replantear la línea de propiedad exacta en segundos, apoyándose únicamente en datos espaciales objetivos e irrefutables.
                         </p>
                         
-                        <!-- Imagen Conceptual de Soporte -->
+                        <!-- Gráfico Conceptual e Iconográfico Fluido -->
                         <div class="my-6 rounded-xl overflow-hidden shadow-sm border border-slate-200">
-                            <div class="bg-slate-150 h-52 flex items-center justify-center flex-col p-4 text-center bg-slate-100">
-                                <i class="fa-solid fa-satellite-dish text-4xl text-blue-900 mb-2"></i>
-                                <span class="text-xs font-bold text-slate-800">Visualización del Sistema de Posicionamiento Global GNSS / CORS</span>
-                                <span class="text-[10px] text-slate-400 mt-1 max-w-md">Interconexión de las parcelas catastrales con redes satelitales activas para suprimir errores de desplazamiento territorial.</span>
+                            <div class="bg-slate-50 flex items-center justify-center flex-col p-6 text-center">
+                                <div class="flex items-center space-x-6 sm:space-x-12 mb-4">
+                                    <div class="flex flex-col items-center">
+                                        <i class="fa-solid fa-satellite text-3xl sm:text-4xl text-blue-900 animate-pulse"></i>
+                                        <span class="text-[9px] font-bold text-slate-500 uppercase mt-2">GNSS Satélites</span>
+                                    </div>
+                                    <div class="text-slate-300"><i class="fa-solid fa-arrows-left-right text-xl"></i></div>
+                                    <div class="flex flex-col items-center">
+                                        <i class="fa-solid fa-tower-cell text-3xl sm:text-4xl text-blue-600"></i>
+                                        <span class="text-[9px] font-bold text-slate-500 uppercase mt-2">Estación CORS</span>
+                                    </div>
+                                    <div class="text-slate-300"><i class="fa-solid fa-arrows-left-right text-xl"></i></div>
+                                    <div class="flex flex-col items-center">
+                                        <i class="fa-solid fa-map-pin text-3xl sm:text-4xl text-emerald-600"></i>
+                                        <span class="text-[9px] font-bold text-slate-500 uppercase mt-2">Lindero Preciso</span>
+                                    </div>
+                                </div>
+                                <span class="text-xs font-bold text-slate-800 px-2">Visualización de Flujo: Posicionamiento Geodésico CORS</span>
+                                <span class="text-[10px] text-slate-400 mt-1 max-w-md px-2 leading-relaxed">Interconexión tridimensional absoluta que blinda la parcela contra desplazamientos físicos y fraudes de linderos.</span>
                             </div>
                         </div>
 
-                        <p class="indent-8">
+                        <p class="indent-6 sm:indent-8 text-justify">
                             Además de la solidez técnica individual, esta metodología posee un profundo impacto estructural en la administración pública. Al georreferenciar todas las parcelas bajo un mismo sistema de coordenadas nacional homogéneo, el sistema informático del Catastro Nacional adquiere la capacidad de cruzar y cotejar automáticamente todos los trabajos técnicos. Cualquier intento de deslinde superpuesto o doble titulación es interceptado de forma automatizada por el software de validación geométrica antes de que se expida el título de propiedad, eliminando de raíz las estafas territoriales.
                         </p>
                     </div>
 
-                    <!-- Contraargumento y Refutación -->
-                    <div class="space-y-4 bg-slate-50 p-6 sm:p-8 rounded-2xl border border-slate-200 my-6 font-sans">
-                        <h3 class="font-bold text-slate-900 text-base tracking-tight flex items-center">
-                            <span class="bg-amber-100 text-amber-700 p-1.5 rounded-lg mr-2.5"><i class="fa-solid fa-scale-balanced text-sm"></i></span>
+                    <!-- Contraargumento y Refutación Destacada -->
+                    <div class="space-y-4 bg-slate-50 p-5 sm:p-8 rounded-2xl border border-slate-200 my-6 font-sans">
+                        <h3 class="font-bold text-slate-900 text-sm sm:text-base tracking-tight flex items-center">
+                            <span class="bg-amber-100 text-amber-700 p-1.5 rounded-lg mr-2.5 shrink-0"><i class="fa-solid fa-scale-balanced text-sm sm:text-base"></i></span>
                             III. Objeción de Sectores Tradicionales y Refutación Técnica
                         </h3>
-                        <p class="text-xs sm:text-sm leading-relaxed text-slate-600 italic">
-                            Por un lado, sectores conservadores de la topografía señalan que los costos operativos de la tecnología GNSS/GPS de grado geodésico son excluyentes, incrementando el precio de los deslindes para las familias de bajos recursos. Así mismo, sostienen que bajo densa cobertura vegetal o entornos urbanos con grandes rascacielos (cañones urbanos), la degradación de la señal por efecto multicamino (multipath) hace que la tecnología satelital falle, lo que demuestra que la topografía óptica tradicional con Estación Total sigue siendo la más confiable para el trabajo del día a día.
+                        <p class="text-xs sm:text-sm leading-relaxed text-slate-600 italic text-justify">
+                            Por un lado, sectores conservadores de la topografía señalan que los costos operativos de la tecnología GNSS/GPS de grado geodésico son excluyentes, incrementando el precio de los deslindes para las familias de bajos recursos. Así mismo, sostienen que bajo densa cobertura vegetal o entornos urbanos con grandes rascacielos, la degradación de la señal satelital hace que la tecnología falle, por lo que la topografía clásica sigue siendo preferible.
                         </p>
-                        <p class="text-xs sm:text-sm leading-relaxed text-blue-900 font-semibold mt-3 border-t border-slate-200 pt-3">
-                            No obstante, esta argumentación confunde la técnica con la metodología operativa. Un profesional moderno no descarta la estación total óptica; más bien, la calibra y la orienta a partir de puntos de control geodésicos georreferenciados previamente con equipos GNSS en espacios despejados. En lo que respecta al factor económico, el desembolso por la adquisición de tecnología geodésica es insignificante en contraste con los devastadores perjuicios que acarrea un deslinde erróneo o un litigio civil que puede tomar décadas en los tribunales, congelando el desarrollo inmobiliario y el patrimonio de las familias dominicanas.
+                        <p class="text-xs sm:text-sm leading-relaxed text-blue-900 font-semibold mt-3 border-t border-slate-200 pt-3 text-justify">
+                            No obstante, esta argumentación confunde la técnica con la metodología operativa. Un profesional moderno no descarta la estación total óptica; más bien, la calibra y la orienta a partir de puntos de control geodésicos georreferenciados previamente en espacios despejados. En lo que respecta al factor económico, el desembolso por la adquisición de tecnología geodésica es insignificante en contraste con los devastadores perjuicios que acarrea un deslinde erróneo o un litigio civil que puede congelar durante décadas el desarrollo inmobiliario y el patrimonio de las familias dominicanas.
                         </p>
                     </div>
 
                     <!-- Conclusión -->
                     <div class="space-y-3">
-                        <h3 class="font-bold text-slate-900 text-lg tracking-tight font-sans not-italic border-b border-slate-100 pb-2">IV. Conclusión</h3>
-                        <p class="indent-8">
+                        <h3 class="font-bold text-slate-900 text-base sm:text-lg tracking-tight font-sans not-italic border-b border-slate-100 pb-2 flex items-center">
+                            <span class="text-blue-900 mr-2">IV.</span> Conclusión
+                        </h3>
+                        <p class="indent-6 sm:indent-8 text-justify">
                             En definitiva, la labor del agrimensor ha evolucionado mucho más allá de la mera delimitación de linderos físicos terrestres; es la disciplina científica que fundamenta la veracidad de los títulos de propiedad que sostienen la economía nacional. 
                         </p>
-                        <p class="indent-8">
+                        <p class="indent-6 sm:indent-8 text-justify">
                             La transición absoluta e impostergable hacia métodos de medición satelital referenciados geodésicamente no responde a un mero capricho instrumental, sino que representa un deber ético fundamental del profesional con su comunidad. Al redactar informes periciales basados en datos objetivos, inmutables e inmunes a disputas subjetivas, los agrimensores de la nueva era trazamos las líneas de propiedad con la verdad geométrica de la ciencia, forjando una sociedad exenta de despojos territoriales y litigios hereditarios.
                         </p>
                     </div>
@@ -368,22 +431,21 @@
             </div>
         </section>
 
-        <!-- PÁGINA 3: REFLEXIÓN FINAL -->
-        <section id="tab-reflexion" class="tab-content hidden space-y-8">
+        <section id="tab-reflexion" class="tab-content hidden space-y-6 sm:space-y-8">
             <div class="border-b border-slate-200 pb-4">
-                <h2 class="text-2xl font-extrabold text-slate-950">Reflexión Final</h2>
-                <p class="text-slate-500 mt-1">Evaluación crítica del proceso de aprendizaje de Ángel Daviel Castillo Acevedo</p>
+                <h2 class="text-xl sm:text-2xl font-extrabold text-slate-950">Reflexión Final</h2>
+                <p class="text-xs sm:text-sm text-slate-500 mt-1">Evaluación crítica del proceso de aprendizaje de Ángel Daviel Castillo Acevedo</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
-                <!-- Tarjeta con la Reflexión Escrita de Ángel -->
-                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 flex flex-col justify-between">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-stretch">
+                <!-- Tarjeta con la Reflexión Escrita -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8 flex flex-col justify-between">
                     <div class="space-y-6">
                         <div class="flex items-center space-x-3 text-blue-900">
-                            <i class="fa-solid fa-quote-left text-3xl"></i>
-                            <h3 class="font-bold text-slate-900 text-lg">La Palabra Escrita como Escudo del Territorio</h3>
+                            <i class="fa-solid fa-quote-left text-2xl sm:text-3xl shrink-0"></i>
+                            <h3 class="font-bold text-slate-900 text-base sm:text-lg">La Palabra Escrita como Escudo del Territorio</h3>
                         </div>
-                        <div class="space-y-4 text-slate-600 leading-relaxed serif-text text-sm sm:text-base">
+                        <div class="space-y-4 text-slate-600 leading-relaxed serif-text text-sm sm:text-base text-justify">
                             <p>
                                 Existe un error común al pensar que la Agrimensura es solo una labor técnica-matemática en la que el profesional se limita a presionar botones, medir y exportar planos. La realización de este portafolio académico me ha abierto los ojos ante una gran realidad: el plano físico no vale nada si no se acompaña de una sólida fundamentación escrita.
                             </p>
@@ -392,7 +454,7 @@
                             </p>
                         </div>
                     </div>
-                    <div class="border-t border-slate-100 pt-6 mt-6 flex items-center justify-between">
+                    <div class="border-t border-slate-100 pt-6 mt-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                         <span class="text-xs text-slate-400 font-bold">Ángel Daviel Castillo Acevedo</span>
                         <div class="flex text-amber-400 text-xs">
                             <i class="fa-solid fa-star"></i>
@@ -405,112 +467,41 @@
                 </div>
 
                 <!-- Panel de Métricas de Desarrollo Académico -->
-                <div class="bg-slate-900 rounded-2xl shadow-xl p-8 text-white flex flex-col justify-between relative overflow-hidden">
-                    <div class="absolute right-[-20px] bottom-[-20px] opacity-10 text-[180px]">
+                <div class="bg-slate-900 rounded-2xl shadow-xl p-6 sm:p-8 text-white flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute right-[-20px] bottom-[-20px] opacity-[0.03] text-[150px] sm:text-[180px] pointer-events-none">
                         <i class="fa-solid fa-route"></i>
                     </div>
                     <div class="space-y-4 relative z-10">
-                        <span class="bg-blue-500 text-xs font-bold px-3 py-1 rounded-md">Logros de Aprendizaje</span>
-                        <h3 class="text-xl font-bold text-slate-100">Competencias Consolidadas en Análisis y Producción de Textos</h3>
+                        <span class="inline-block bg-blue-500 text-[10px] font-bold px-3 py-1 rounded-md">Logros de Aprendizaje</span>
+                        <h3 class="text-lg sm:text-xl font-bold text-slate-100">Competencias Consolidadas</h3>
                         
                         <div class="space-y-4 pt-4">
                             <div class="flex items-start space-x-3">
-                                <span class="bg-slate-800 text-blue-300 p-2 rounded-lg mt-0.5"><i class="fa-solid fa-filter text-xs"></i></span>
+                                <span class="bg-slate-800 text-blue-300 p-2 rounded-lg mt-0.5 shrink-0"><i class="fa-solid fa-filter text-xs"></i></span>
                                 <div>
-                                    <h4 class="font-bold text-slate-200 text-xs">Análisis Crítico Estructural</h4>
-                                    <p class="text-slate-400 text-[11px] leading-relaxed">Capacidad para descomponer de forma quirúrgica los textos de opinión técnica, separando tesis, argumentos científicos y prejuicios.</p>
+                                    <h4 class="font-bold text-slate-200 text-xs sm:text-sm">Análisis Crítico Estructural</h4>
+                                    <p class="text-slate-400 text-[11px] sm:text-xs leading-relaxed mt-0.5">Capacidad para descomponer de forma quirúrgica los textos de opinión técnica, separando tesis, argumentos científicos y objeciones.</p>
                                 </div>
                             </div>
                             <div class="flex items-start space-x-3">
-                                <span class="bg-slate-800 text-blue-300 p-2 rounded-lg mt-0.5"><i class="fa-solid fa-gavel text-xs"></i></span>
+                                <span class="bg-slate-800 text-blue-300 p-2 rounded-lg mt-0.5 shrink-0"><i class="fa-solid fa-gavel text-xs"></i></span>
                                 <div>
-                                    <h4 class="font-bold text-slate-200 text-xs">Redacción Argumental Pericial</h4>
-                                    <p class="text-slate-400 text-[11px] leading-relaxed">Habilidad para estructurar ensayos de corte científico técnico, anticipando los contraargumentos para refutarlos lógicamente.</p>
+                                    <h4 class="font-bold text-slate-200 text-xs sm:text-sm">Redacción Argumental Pericial</h4>
+                                    <p class="text-slate-400 text-[11px] sm:text-xs leading-relaxed mt-0.5">Habilidad para estructurar ensayos de corte científico técnico, anticipando los contraargumentos colindantes para refutarlos de forma objetiva.</p>
                                 </div>
                             </div>
                             <div class="flex items-start space-x-3">
-                                <span class="bg-slate-800 text-blue-300 p-2 rounded-lg mt-0.5"><i class="fa-solid fa-shield text-xs"></i></span>
+                                <span class="bg-slate-800 text-blue-300 p-2 rounded-lg mt-0.5 shrink-0"><i class="fa-solid fa-shield text-xs"></i></span>
                                 <div>
-                                    <h4 class="font-bold text-slate-200 text-xs">Conciencia de Seguridad Jurídica</h4>
-                                    <p class="text-slate-400 text-[11px] leading-relaxed">Compromiso ético que resalta la gran responsabilidad civil que recae sobre el agrimensor moderno al certificar un plano catastral.</p>
+                                    <h4 class="font-bold text-slate-200 text-xs sm:text-sm">Conciencia de Seguridad Jurídica</h4>
+                                    <p class="text-slate-400 text-[11px] sm:text-xs leading-relaxed mt-0.5">Compromiso ético que resalta la gran responsabilidad civil que recae sobre el agrimensor al certificar un plano catastral.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="pt-6 border-t border-slate-800 mt-6 flex justify-between items-center relative z-10">
-                        <span class="text-[10px] text-slate-500 font-bold tracking-wider">ESTADO DEL ENTREGABLE</span>
-                        <span class="text-[10px] bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2.5 py-0.5 rounded-full font-bold">100% CUMPLIDO (RUBRICA UAPA)</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- PÁGINA 4: TUTORIAL GOOGLE SITES -->
-        <section id="tab-tutorial" class="tab-content hidden space-y-8">
-            <div class="border-b border-slate-200 pb-4">
-                <h2 class="text-2xl font-extrabold text-slate-950">Manual de Integración: ¿Cómo añadirlo en tu Google Sites oficial?</h2>
-                <p class="text-slate-500 mt-1">Sigue estas breves instrucciones para insertar el código interactivo y entregar tu sitio</p>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <!-- Los 3 Pasos Clínicos -->
-                <div class="lg:col-span-2 space-y-6">
-                    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 space-y-3">
-                        <h3 class="font-bold text-slate-950 text-base flex items-center">
-                            <span class="bg-blue-100 text-blue-900 h-8 w-8 rounded-full flex items-center justify-center mr-3 font-bold text-sm">1</span>
-                            Accede a tu Google Sites Académico
-                        </h3>
-                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed pl-11">
-                            Ingresa con tu cuenta institucional de la UAPA a <a href="https://sites.google.com" target="_blank" class="text-blue-600 font-bold hover:underline">sites.google.com</a>. Crea un nuevo portafolio en blanco con tu nombre completo o abre el sitio existente que tienes reservado para la asignatura.
-                        </p>
-                    </div>
-
-                    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 space-y-3">
-                        <h3 class="font-bold text-slate-950 text-base flex items-center">
-                            <span class="bg-blue-100 text-blue-900 h-8 w-8 rounded-full flex items-center justify-center mr-3 font-bold text-sm">2</span>
-                            Incorpora el Bloque de Código HTML
-                        </h3>
-                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed pl-11">
-                            En la pestaña derecha **"Insertar"** de Google Sites, selecciona la opción **"Incorporar" (ícono de &lt;/&gt;)**. Haz clic sobre la pestaña **"Insertar código"**, pega este código en su totalidad y presiona **"Siguiente"** y luego **"Insertar"**.
-                        </p>
-                    </div>
-
-                    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 space-y-3">
-                        <h3 class="font-bold text-slate-950 text-base flex items-center">
-                            <span class="bg-blue-100 text-blue-900 h-8 w-8 rounded-full flex items-center justify-center mr-3 font-bold text-sm">3</span>
-                            Estira el Bloque a Dimensiones Completas
-                        </h3>
-                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed pl-11">
-                            Una vez insertado el portafolio en tu Google Sites, se creará un recuadro. Arrastra las esquinas de selección azules para que el portafolio abarque todo el ancho de la página y posea una altura mínima generosa de aproximadamente 950px para evitar una barra de navegación interna (doble scroll). Finalmente haz clic en **Publicar**.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Panel de Recursos y Validación de Rúbrica -->
-                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between">
-                    <div class="space-y-4">
-                        <div class="bg-emerald-50 text-emerald-800 p-4 rounded-xl border border-emerald-100 flex items-start space-x-3">
-                            <i class="fa-solid fa-shield-halved text-emerald-600 text-lg mt-0.5 animate-bounce"></i>
-                            <div>
-                                <h4 class="font-bold text-xs">Portafolio Completado</h4>
-                                <p class="text-[11px] text-emerald-700 mt-1">Este entregable interactivo cuenta con todos los puntos exigidos por la cátedra de la facilitadora Pura A. Reinoso Navarro para una calificación de excelencia.</p>
-                            </div>
-                        </div>
-                        <div class="pt-4 border-t border-slate-100 space-y-2">
-                            <span class="text-[10px] text-slate-400 font-bold uppercase block tracking-wider">Estructura Curricular</span>
-                            <div class="text-[11px] space-y-2 text-slate-600">
-                                <p class="flex items-center"><i class="fa-solid fa-square-check text-blue-600 mr-2"></i> 1. Presentación (Logo e Identidad)</p>
-                                <p class="flex items-center"><i class="fa-solid fa-square-check text-blue-600 mr-2"></i> 2. Introducción Formal del Portafolio</p>
-                                <p class="flex items-center"><i class="fa-solid fa-square-check text-blue-600 mr-2"></i> 3. Actividad I (Ficha y Argumentos)</p>
-                                <p class="flex items-center"><i class="fa-solid fa-square-check text-blue-600 mr-2"></i> 4. Actividad II (Ensayo Técnico)</p>
-                                <p class="flex items-center"><i class="fa-solid fa-square-check text-blue-600 mr-2"></i> 5. Reflexión Académica Final</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="pt-6 border-t border-slate-100">
-                        <a href="https://sites.google.com" target="_blank" class="w-full bg-blue-900 hover:bg-blue-950 text-white text-center font-bold text-xs py-3 rounded-xl block transition-all shadow-md shadow-blue-100 flex items-center justify-center">
-                            <i class="fa-solid fa-arrow-up-right-from-square mr-2"></i> Abrir Google Sites
-                        </a>
+                    <div class="pt-6 border-t border-slate-800 mt-6 flex flex-col sm:flex-row gap-3 justify-between items-start sm:items-center relative z-10">
+                        <span class="text-[9px] sm:text-[10px] text-slate-500 font-bold tracking-wider">ESTADO DEL ENTREGABLE</span>
+                        <span class="text-[9px] sm:text-[10px] bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2.5 py-0.5 rounded-full font-bold">100% CUMPLIDO (RÚBRICA UAPA)</span>
                     </div>
                 </div>
             </div>
@@ -519,14 +510,14 @@
     </main>
 
     <!-- PIE DE PÁGINA -->
-    <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 mt-16 text-center text-xs">
-        <div class="max-w-7xl mx-auto px-4">
+    <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 mt-16 text-center text-[10px] sm:text-xs">
+        <div class="max-w-7xl mx-auto px-4 space-y-2">
             <p class="text-slate-300 font-bold">UAPA - Análisis y Producción de Textos • Portafolio Académico Digital</p>
-            <p class="text-slate-500 mt-1">Desarrollado de manera íntegra por Ángel Daviel Castillo Acevedo. Matrícula 100102326. Agrimensura.</p>
+            <p class="text-slate-500">Desarrollado de manera íntegra por Ángel Daviel Castillo Acevedo. Matrícula 100102326. Escuela de Agrimensura.</p>
+            <p class="text-slate-600">Publicado de manera abierta en GitHub Pages.</p>
         </div>
     </footer>
 
-    <!-- LÓGICA DE INTERACCIÓN SCRIPT -->
     <script>
         // Función para cambiar de pestaña dinámicamente en el portafolio
         function switchTab(tabId) {
@@ -555,15 +546,40 @@
                 activeNav.classList.remove('text-slate-600', 'hover:text-slate-900', 'hover:bg-slate-100');
                 activeNav.classList.add('text-blue-900', 'bg-blue-50');
             }
+
+            // Sincronizar el estado en el menú móvil lateral (Drawer)
+            const mobileButtons = document.querySelectorAll('.mobile-nav-btn');
+            mobileButtons.forEach(mBtn => {
+                mBtn.classList.remove('text-blue-900', 'bg-blue-50');
+                mBtn.classList.add('text-slate-600', 'hover:text-slate-900', 'hover:bg-slate-50');
+            });
+
+            // Buscar botón móvil activo e iluminarlo
+            mobileButtons.forEach(mBtn => {
+                if (mBtn.getAttribute('onclick').includes(tabId)) {
+                    mBtn.classList.remove('text-slate-600', 'hover:text-slate-900', 'hover:bg-slate-50');
+                    mBtn.classList.add('text-blue-900', 'bg-blue-50');
+                }
+            });
             
-            // Scroll suave hacia arriba tras el cambio de pestaña para mejor experiencia de usuario (UX)
+            // Scroll suave hacia arriba tras el cambio de pestaña para mejor UX en móviles
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Mostrar/Ocultar Menú Móvil en pantallas pequeñas
+        // Control de Menú Móvil Deslizante (Drawer)
         function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
+            const drawer = document.getElementById('mobile-drawer');
+            if (drawer.classList.contains('translate-x-full')) {
+                // Abrir menú móvil
+                drawer.classList.remove('translate-x-full');
+                drawer.classList.add('translate-x-0');
+                document.body.classList.add('overflow-hidden'); // Evita scroll de fondo al abrir menú
+            } else {
+                // Cerrar menú móvil
+                drawer.classList.remove('translate-x-0');
+                drawer.classList.add('translate-x-full');
+                document.body.classList.remove('overflow-hidden');
+            }
         }
     </script>
 </body>
